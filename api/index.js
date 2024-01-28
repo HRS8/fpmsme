@@ -6,7 +6,7 @@ import authRoutes from './routes/auth.route.js';
 import cookieParser from 'cookie-parser';
 import path from 'path';
 dotenv.config();
-
+<Router basename={process.env.PUBLIC_URL}></Router>
 mongoose
   .connect(process.env.MONGO)
   .then(() => {
@@ -33,6 +33,7 @@ app.use(cookieParser());
 app.listen(process.env.PORT || 3000, () => {
   console.log('Server listening on port 3000');
 });
+
 
 app.use('/api/user', userRoutes);
 app.use('/api/auth', authRoutes);
