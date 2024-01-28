@@ -1,10 +1,20 @@
+import { useContext } from "react";
+import { ThemeContext } from "../components/themecontext";
 
 export default function About() {
+  const { theme } = useContext(ThemeContext);
+
   return (
-    <div className="max-w-2xl px-4 py-12 mx-auto">
-      <h1 className="mb-4 text-3xl font-bold text-slate-800">About</h1>
-      <p className="mb-4 text-slate-700">
-        sorry i got a lazy ass dev
+    <div
+      className={
+        theme === "dark"
+          ? "max-w-2xl px-4 py-12 mx-auto bg-black text-white"
+          : "max-w-2xl px-4 py-12 mx-auto bg-white text-black"
+      }
+    >
+      <h1 className="mb-4 text-3xl font-bold">About MSME</h1>
+      <p className="mb-4 text-lg">
+        This is the about page for the MSME application.
       </p>
     </div>
   );

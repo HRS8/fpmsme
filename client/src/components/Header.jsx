@@ -1,10 +1,19 @@
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useContext } from "react";
+import { ThemeContext } from "./themecontext";
+import { DarkModeSwitch } from "react-toggle-dark-mode";
+
 
 export default function Header() {
   const { currentUser } = useSelector((state) => state.user);
+  const { theme, toggleTheme } = useContext(ThemeContext);
   return (
-    <div className="bg-slate-200">
+    <div
+      className={
+        theme === "dark" ? "bg-black text-white" : "bg-white text-black"
+      }
+    >
       <div className="flex items-center justify-between max-w-6xl p-3 mx-auto">
         <Link to="/">
           <h1 className="font-bold">MSME</h1>
@@ -24,9 +33,17 @@ export default function Header() {
                 className="object-cover rounded-full h-7 w-7"
               />
             ) : (
-              <li>Sign In</li>
+              <li>SignIn</li>
             )}
           </Link>
+          <div className={theme}>
+            <DarkModeSwitch
+              style={{outline: "none"}}
+              checked={theme === "dark"}
+              onChange={toggleTheme}
+              size={23}
+            />
+          </div>
         </ul>
       </div>
     </div>
