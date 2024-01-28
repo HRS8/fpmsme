@@ -6,7 +6,6 @@ import authRoutes from './routes/auth.route.js';
 import cookieParser from 'cookie-parser';
 import path from 'path';
 dotenv.config();
-<Router basename={process.env.PUBLIC_URL}></Router>
 mongoose
   .connect(process.env.MONGO)
   .then(() => {
