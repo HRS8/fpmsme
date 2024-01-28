@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { ThemeContext } from "../components/themeContext";
+import { ThemeContext } from "../components/themecontext";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
