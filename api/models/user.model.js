@@ -21,6 +21,22 @@ const userSchema = new mongoose.Schema(
       default:
         'https://img.freepik.com/premium-vector/man-avatar-profile-picture-vector-illustration_268834-538.jpg',
     },
+    balance: {
+      type: Number,
+      default: 0,
+    },
+    dueDate:{
+      type: Date,
+      default: new Date(),
+    },
+    amountOwned: {
+      type: Number,
+      default: 0,
+    },
+    phoneNumber: {
+      type: String,
+      default: '',
+    },
   },
   { timestamps: true }
 );
