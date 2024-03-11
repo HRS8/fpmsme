@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import { ThemeContext } from "../components/themecontext";
-import SearchBar from "./Searchbar";
 
 export default function Home() {
   const { theme } = useContext(ThemeContext);
@@ -14,7 +13,10 @@ export default function Home() {
       }
     >
       <h1 className="mb-4 text-3xl font-bold">Welcome to MSME!</h1>
-      <SearchBar />
+      <p className="mb-4 text-lg">
+        This is a starter template for a React application with Tailwind CSS and
+        React Router.
+      </p>
     </div>
   );
 }
