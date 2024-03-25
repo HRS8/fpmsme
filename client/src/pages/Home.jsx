@@ -1,10 +1,9 @@
 import { useContext } from "react";
 import { ThemeContext } from "../components/themecontext";
-import SearchBar from "./Searchbar";
-
+import Form from "./form";
+import Remainders from "./remainders";
 export default function Home() {
   const { theme } = useContext(ThemeContext);
-
   return (
     <div
       className={
@@ -14,7 +13,8 @@ export default function Home() {
       }
     >
       <h1 className="mb-4 text-3xl font-bold">Welcome to MSME!</h1>
-      <SearchBar />
+      <Form />
+      <Remainders />
     </div>
   );
 }
