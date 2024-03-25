@@ -54,3 +54,17 @@ export const deleteUser = async (req, res, next) => {
   }
 
 }
+// user.controller.js
+export const getUserRemainders = async (req, res) => {
+  console.log("hii")
+  try {
+    const email = req.params.email;
+    console.log(`Fetching remainders for user: ${email}`);
+    const remainders = await Remainder.find({ email: email });
+    console.log(`Fetched remainders: ${JSON.stringify(remainders)}`);
+    res.json(remainders);
+  } catch (error) {
+    console.error(`Error fetching remainders: ${error}`);
+    res.status(500).json({ error: 'An error occurred while fetching remainders' });
+  }
+};

@@ -14,7 +14,6 @@ export default function Home() {
     >
       <h1 className="mb-4 text-3xl font-bold">Welcome to MSME!</h1>
       <Form />
-      <Remainders />
     </div>
   );
 }

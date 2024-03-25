@@ -14,6 +14,13 @@ router.post('/update/:id', verifyToken, updateUser);
 router.delete('/delete/:id', verifyToken, deleteUser);
 router.post('/remainder', async (req, res) => {
   try{
+    Remainder.find({email:'harshithvallabaneni3824@gmail.com'},(err,remainders)=>{
+      if(err){
+        console.log(err);
+      }else{
+        console.log(remainders);
+      }
+    });
     const {email,clientName,phoneNumber,amountOwed,dateDue} = req.body;
     const newRemainder = new Remainder({email,clientName,phoneNumber,amountOwed,dateDue});
     await newRemainder.save();
