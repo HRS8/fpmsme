@@ -7,8 +7,33 @@ export default function Form() {
   const [dateDue, setDateDue] = useState(new Date());
   const currentUser = useSelector((state) => state.user.currentUser);
   const email = currentUser ? currentUser.email : '';
+  const [creditScore, setCreditScore] = useState(0);
+  const calculateCreditLine = (creditScore) => {
+    let creditLine = 0;
+    let rating = '';
+    if (800 <= creditScore && creditScore <= 850) {
+      creditLine = 5000000; // 50 lakhs
+      rating = 'Excellent';
+    } else if (740 <= creditScore && creditScore <= 799) {
+      creditLine = 3500000; // 35 lakhs
+      rating = 'Very Good';
+    } else if (670 <= creditScore && creditScore <= 739) {
+      creditLine = 2500000; // 25 lakhs
+      rating = 'Good';
+    } else if (580 <= creditScore && creditScore <= 669) {
+      creditLine = 1000000; // 10 lakhs
+      rating = 'Fair';
+    } else if (300 <= creditScore && creditScore <= 579) {
+      creditLine = 500000; // 5 lakhs
+      rating = 'Poor';
+    } else {
+      rating = 'Invalid credit score';
+    }
+    return { creditLine, rating };
+  };
   const handleSubmit = async (event) => {
     event.preventDefault();
+    const { creditLine, rating } = calculateCreditLine(creditScore);
     try{
         const response=await fetch('/api/user/remainder',{
             method:'POST',
@@ -57,11 +82,19 @@ export default function Form() {
       </div>
       <div className='mb-4'>
         <label className='block mb-2 text-sm font-bold text-gray-700' htmlFor='dateDue'>Due Date</label>
-        <input 
-        type="date" 
-        value={dateDue} 
-        onChange={(e) => setDateDue(e.target.value)} 
+        <input
+        type="date"
+        value={dateDue}
+        onChange={(e) => setDateDue(e.target.value)}
         className='block w-full px-4 py-2 text-gray-700 rounded-lg shadow-sm focus:outline-none focus:shadow-outline'
+        />
+      </div>
+      <div>
+        <label htmlFor='creditScore'>Credit Score</label>
+        <input
+          type='number'
+          value={creditScore}
+          onChange={(e) => setCreditScore(e.target.value)}
         />
       </div>
       <div>
