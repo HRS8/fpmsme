@@ -33,7 +33,7 @@ export default function Form() {
   };
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const { creditLine, rating } = calculateCreditLine(creditScore);
+    const { creditLine, rating } = calculateCreditLine(creditScore); //teyya poo
     try{
         const response=await fetch('/api/user/remainder',{
             method:'POST',
