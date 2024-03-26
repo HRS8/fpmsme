@@ -26,7 +26,7 @@ router.post('/remainder', async (req, res) => {
         console.log('sending message');
         client.messages
         .create({
-            body: 'Your Yummy Cupcakes Company order of 1 dozen frosted cupcakes has shipped and should be delivered on July 10, 2019. Details: http://www.yummycupcakes.com/',
+            body: 'This is gentle remainder for the current order due to MSME merchant',
             from: 'whatsapp:+14155238886',
             to: 'whatsapp:+919885133855',
         })
